@@ -1,0 +1,32 @@
+{
+    "name": "weiwei.liu/bbschedule",
+    "description": "distributed schedule framework",
+    "type": "library",
+    "authors": [
+        {
+            "name": "liuweiwei",
+            "email": "youly001@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "packagist": false
+        },
+        {
+            "type": "composer",
+            "url": "http://packagist.phpcomposer.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "bbschedule\\jobtracker\\": "./jobtracker",
+            "bbschedule\\tasktracker\\": "./tasktracker",
+            "bbschedule\\provider\\": "./provider",
+            "bbschedule\\lib\\": "./lib"
+        }
+    }
+}
