@@ -57,7 +57,6 @@ class Task_tracker {
         $job_schedule->from_json($msg->data, FALSE);
         $job_def = new Job_def();
         $job_def->from_json($job_schedule->job_def);
-        echo "get command, ", json_encode($job_def), "\n";
         $this->log->info('task_tracker', "get command: $job_def->command");
         $process = new \swoole_process(function($process) use ($job_def) {
             $command = trim($job_def->command);

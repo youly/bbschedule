@@ -51,3 +51,11 @@ CREATE TABLE IF NOT EXISTS `job_msg_queue` (
   `gmt_create` int(11) unsigned NOT NULL COMMENT '添加时间',
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `job_msg_queue_pending` (
+  `id` bigint(20) NOT NULL auto_increment COMMENT '自增ID',
+  `body` blob COMMENT '消息内容',
+  `priority` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '消息优先级',
+  `gmt_create` int(11) unsigned NOT NULL COMMENT '添加时间',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

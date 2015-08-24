@@ -104,7 +104,7 @@ class Job_tracker {
         $this->log->trace('job_track.message_loop', 'processing message...');
         $job_msg = $this->queue_provider->consume();
         if (!$job_msg) {
-            $this->log->error('job_tracker.message.consume', 'msg consume failed, no data');
+            $this->log->trace('job_tracker.message.consume', 'msg consume failed, no data');
             return;
         } 
         if (empty($job_msg->body)) {
@@ -266,7 +266,7 @@ class Job_tracker {
         swoole_set_process_name('JobServer-master');
         $this->log->info('job_tracker', 'server process(' . posix_getpid() . ') started on ' . $this->ip . ':' . $this->port);
         $this->start_schedule_process();
-        $serv->tick(1000, array($this, 'message_loop'));
+        $serv->tick(100, array($this, 'message_loop'));
         //$serv->after(3000, array($this, 'start_http_process'));
     }
 

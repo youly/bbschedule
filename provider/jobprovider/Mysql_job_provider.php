@@ -182,7 +182,6 @@ class Mysql_job_provider implements Job_provider {
         $values[] = $job_schedule->id;
         $values = Utils::add_slashes($values);
         $sql = vsprintf($sql, $values);
-        echo $sql, "\n";
         $this->db->execute($sql);
         return $this->db->affected_rows();
     }
@@ -191,7 +190,6 @@ class Mysql_job_provider implements Job_provider {
         $sql = "INSERT INTO `job_log` (`schedule_id`, `job_id`, `pid`, `log`, `gmt_create`) VALUES (%d, %d, %d, '%s', %d)";
         $fields = [$log->schedule_id, $log->job_id, $log->pid, Utils::add_slashes($log->log), $log->gmt_create];
         $sql = vsprintf($sql, $fields);
-        echo $sql, "\n";
         $this->db->execute($sql);
         return $this->db->insert_id();
     }
